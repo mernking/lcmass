@@ -5,9 +5,6 @@ export default async function post (req, res) {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-
-
-  
   
   if (req.method === "GET") {
     try {
