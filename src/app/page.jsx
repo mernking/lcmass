@@ -6,17 +6,17 @@ import "./globals.css";
 
 export default function Home() {
   return (
-    <main className="bg-background text-text">
-      <section>
+    <main className="bg-background text-text w-full">
+      <section className="w-full">
         <Navbar />
       </section>
-      <section>
+      <section className="w-full">
         <Hero />
       </section>
-      <section>
+      <section className="w-full">
         <About />
       </section>
-      <section>
+      <section className="w-full">
         <Features />
       </section>
     </main>
