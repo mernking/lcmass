@@ -1,69 +1,162 @@
-import Link from 'next/link';
-import React from 'react'
+"use client";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import anime from "animejs/lib/anime.es.js";
+
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    const menu = document.getElementById("mobile_menu");
+    if (isMenuOpen) {
+      anime({
+        targets: menu,
+        translateX: 0,
+        opacity: 1,
+        duration: 300,
+        easing: "easeOutExpo",
+      });
+    } else {
+      anime({
+        targets: menu,
+        translateX: "-100%",
+        opacity: 0,
+        duration: 300,
+        easing: "easeOutExpo",
+      });
+    }
+  }, [isMenuOpen]);
+
   return (
-    <header className="bg-background w-full py-4 px-3 flex justify-between items-center">
+    <header className="bg-background flex justify-between items-center px-6 py-5">
       <div className="logo">
         <h1>LCmass</h1>
       </div>
-      <div className="navbtns">
-        <div className="desktop hidden sm:block flex flex-row text-sm">
-          <Link href="#hero">
-            <p>Home</p>
-          </Link>
-          <Link href="#about">
-            <p>About</p>
-          </Link>
-          <Link href="#hero">
-            <p>Features</p>
-          </Link>
-          <Link href="/download">
-            <p>Download</p>
-          </Link>
-          <Link href="#hero">
-            <p>Docs</p>
-          </Link>
-        </div>
-        <div className="mobile w-full sm:hidden flex flex-col gap-2 px-2 py-2">
-          <Link href="#hero">
-            <p>Home</p>
-          </Link>
-          <Link href="#about">
-            <p>About</p>
-          </Link>
-          <Link href="#hero">
-            <p>Features</p>
-          </Link>
-          <Link href="/download">
-            <p>Download</p>
-          </Link>
-          <Link href="#hero">
-            <p>Docs</p>
-          </Link>
-          <div className="account_log flex flex-row">
-            <div className="login">
-              <Link href="/login">
-                <p>login</p>
-              </Link>
+      <div className="navlinks">
+        {/* Mobile Menu */}
+        <div className="mobile sm:hidden">
+          <button
+            onClick={toggleMenu}
+            className="menu_button"
+            aria-label="Toggle Menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`stroke-current ${
+                isMenuOpen ? "text-primary" : "text-text"
+              }`}
+            >
+              <path d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+          <div
+            id="mobile_menu"
+            className={`absolute top-0 left-0 w-full px-10 sm:hidden text-center bg-accent py-4`}
+          >
+            <div className="w-full py-2 text-right">
+              <button
+                onClick={toggleMenu}
+                className="menu_button"
+                aria-label="Toggle Menu"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`stroke-current ${
+                    isMenuOpen ? "text-primary" : "text-text"
+                  }`}
+                >
+                  <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+              </button>
             </div>
-            <div className="signup">
-              <Link href="/signup">
-                <p>sign up</p>
-              </Link>
+            <Link href="#home">
+              <p className="menu-link">Home</p>
+            </Link>
+            <Link href="#about">
+              <p className="menu-link">About</p>
+            </Link>
+            <Link href="#features">
+              <p className="menu-link">Features</p>
+            </Link>
+            <Link href="/download">
+              <p className="menu-link">Download</p>
+            </Link>
+            <Link href="/doc">
+              <p className="menu-link">Doc</p>
+            </Link>
+            <div className="account_log py-5 w-full text-center flex flex-row justify-center items-center gap-4 text-text">
+              <div className="login">
+                <Link href="/login">
+                  <button>
+                    <p>log in</p>
+                  </button>
+                </Link>
+              </div>
+              <div className="signup">
+                <Link href="/signup">
+                  <button>
+                    <p>sign up</p>
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Desktop Menu */}
+        <div className="desktop flex flex-row gap-4">
+          <Link href="#home">
+            <p className="menu-link">Home</p>
+          </Link>
+          <Link href="#about">
+            <p className="menu-link">About</p>
+          </Link>
+          <Link href="#features">
+            <p className="menu-link">Features</p>
+          </Link>
+          <Link href="/download">
+            <p className="menu-link">Download</p>
+          </Link>
+          <Link href="/doc">
+            <p className="menu-link">Doc</p>
+          </Link>
+        </div>
       </div>
-      <div className="account_log flex flex-row hidden sm:block">
+      {/* Account Links */}
+      <div className="account_log text-center flex flex-row justify-center items-center gap-2 text-text">
         <div className="login">
           <Link href="/login">
-            <p>login</p>
+            <button>
+              <p>log in</p>
+            </button>
           </Link>
         </div>
         <div className="signup">
           <Link href="/signup">
-            <p>sign up</p>
+            <button>
+              <p>sign up</p>
+            </button>
           </Link>
         </div>
       </div>
