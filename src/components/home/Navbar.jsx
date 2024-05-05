@@ -128,32 +128,32 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="desktop flex flex-row gap-4">
           <Link href="#home">
-            <p className="menu-link">Home</p>
+            <p className="menu-link hover:text-primary">Home</p>
           </Link>
           <Link href="#about">
-            <p className="menu-link">About</p>
+            <p className="menu-link hover:text-primary">About</p>
           </Link>
           <Link href="#features">
-            <p className="menu-link">Features</p>
+            <p className="menu-link hover:text-primary">Features</p>
           </Link>
           <Link href="/download">
-            <p className="menu-link">Download</p>
+            <p className="menu-link hover:text-primary">Download</p>
           </Link>
           <Link href="/doc">
-            <p className="menu-link">Doc</p>
+            <p className="menu-link hover:text-primary">Doc</p>
           </Link>
         </div>
       </div>
       {/* Account Links */}
       <div className="account_logd text-center flex flex-row justify-center items-center gap-2 text-text">
-        <div className="login">
+        <div className="login hover:text-primary">
           <Link href="/login">
             <button>
               <p>log in</p>
             </button>
           </Link>
         </div>
-        <div className="signup">
+        <div className="signup hover:text-primary">
           <Link href="/signup">
             <button>
               <p>sign up</p>
