@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import anime from "animejs/lib/anime.es.js";
+import "./nav.css"
 
 
 export default function Navbar() {
@@ -144,7 +145,7 @@ export default function Navbar() {
         </div>
       </div>
       {/* Account Links */}
-      <div className="account_log text-center flex flex-row justify-center items-center gap-2 text-text">
+      <div className="account_logd text-center flex flex-row justify-center items-center gap-2 text-text">
         <div className="login">
           <Link href="/login">
             <button>
