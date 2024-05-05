@@ -1,11 +1,11 @@
 import { MongoClient } from "mongodb";
 
-export default async function post (req, res) {
+export default async function post(req, res) {
   const client = new MongoClient("mongodb://localhost:27017/lcmass", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  
+
   if (req.method === "GET") {
     try {
       console.log("mongoos data fetched");
