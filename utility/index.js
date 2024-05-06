@@ -6,7 +6,6 @@ async function connection() {
     if (mongoose.connections[0].readyState) return;
 
     await mongoose.connect("mongodb://localhost:27017/lcmass", {
-      useNewUrlParser: true,
       useUnifiedTopology: true,
       // These options are deprecated in Mongoose v6, so remove them
       // useFindAndModify: false,
