@@ -1,15 +1,8 @@
-.none {
-  display: none;
+
+.heromsg{
+  max-width: 30rem;
+  text-align: center;
 }
-
-#none {
-  display: none;
-}
-
-/* .desktop{
-
-} */
-
 
 @media screen and (max-width: 640px) {
   .account_logd {
@@ -18,4 +11,7 @@
   .desktop{
     display: none;
   }
+ .herotxt{
+  font-size: 25px;
+ }
 }
