@@ -1,7 +1,6 @@
 import connection from "../../../../utility";
 import User from "../../../../models/user";
 
-
 /**
  * @param {import('next').NextApiRequest} req
  * @param {import('next').NextApiResponse} res
