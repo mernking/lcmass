@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import connection from "../../../../utility";
 import User from "../../../../models/user";
+import bcrypt from "bcryptjs";
 
 await connection();
 
@@ -25,7 +26,15 @@ export async function POST(req, res) {
         message: "User already exists",
       });
     }
-    const user = new User(data);
+
+    const newpass = await bcrypt.genSalt(data.password, 10);
+    const dataUpdate = {
+      name: data.name,
+      email: data.email,
+      password: newpass,
+    }
+
+    const user = new User(dataUpdate);
     await user.save();
     return NextResponse.json(user);
   } catch (error) {
