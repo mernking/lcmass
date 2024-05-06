@@ -15,7 +15,7 @@ export async function POST(req, res) {
     const data = await req.json();
     // Check if required fields are provided
     if (!data.password || !data.email || !data.name) {
-      return NextResponse.json({
+      return res.status(400).json({
         message: "Missing required fields: password, email, and name",
       });
     }
@@ -27,16 +27,18 @@ export async function POST(req, res) {
       });
     }
 
-    const newpass = await bcrypt.genSalt(data.password, 10);
-    const dataUpdate = {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(data.password, salt);
+
+    const newUser = new User({
       name: data.name,
       email: data.email,
-      password: newpass,
-    }
+      password: hashedPassword,
+    });
 
-    const user = new User(dataUpdate);
-    await user.save();
-    return NextResponse.json(user);
+    await newUser.save();
+
+    return NextResponse.json(newUser);
   } catch (error) {
     return NextResponse.json({
       message: `${error.message}`,
