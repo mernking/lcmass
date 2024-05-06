@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import connection from "../../../../utility";
 import User from "../../../../models/user";
 import bcrypt from "bcryptjs";
