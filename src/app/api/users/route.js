@@ -5,21 +5,8 @@ import User from "../../../../models/user";
 await connection();
 
 export async function GET(req, res) {
-  try {
-    const data = await req.json(); // Assuming you're passing email as a query parameter
-
-    const user = await User.findOne({ email: data.email });
-
-    if (!user) {
-      return NextResponse.json({ message: "No user found" });
-    }
-
-    // You might not want to return the entire user object here for security reasons
-    // Depending on what you need, you might only want to return certain fields
-    return NextResponse.json({ message: "User found", user: user.email });
-  } catch (error) {
-    return NextResponse.json({ message: error.message });
-  }
+  const users = await User.find({});
+  return NextResponse.json(users);
 }
 
 export async function POST(req, res) {
