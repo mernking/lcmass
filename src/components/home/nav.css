@@ -1,0 +1,21 @@
+.none {
+  display: none;
+}
+
+#none {
+  display: none;
+}
+
+/* .desktop{
+
+} */
+
+
+@media screen and (max-width: 640px) {
+  .account_logd {
+    display: none;
+  }
+  .desktop{
+    display: none;
+  }
+}
