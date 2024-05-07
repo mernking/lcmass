@@ -3,10 +3,11 @@ import Features from "@/components/home/Features";
 import Hero from "@/components/home/Hero";
 import Navbar from "@/components/home/Navbar";
 import "./globals.css";
+import Workings from "@/components/home/Workings";
 
 export default function Home() {
   return (
-    <main className="bg-background text-text w-full">
+    <main className="bg-background flex flex-col text-text w-full">
       <section className="w-full">
         <Navbar />
       </section>
@@ -14,10 +15,13 @@ export default function Home() {
         <Hero />
       </section>
       <section className="w-full">
-        <About />
+        <Features />
       </section>
       <section className="w-full">
-        <Features />
+        <Workings />
+      </section>
+      <section id="about" className="w-full">
+        <About />
       </section>
     </main>
   );
