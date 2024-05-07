@@ -8,7 +8,7 @@ export default function About() {
       </div>
       <div className="abcontent w-full text-center px-10">
         <p>
-          lcmas is a tool developed to help shopify machatnts handle and
+            lcmas is a tool developed to help shopify machatnts handle and
           modify their inventories, sales tracking, product upload, product
           editing, email, customer support ...etc, right in your pocket and from
           your computer you have total countrol and automation.
