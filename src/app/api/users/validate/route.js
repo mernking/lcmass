@@ -1,7 +1,8 @@
 import connection from "../../../../../utility";
 import User from "../../../../../models/user";
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 await connection();
 
@@ -27,8 +28,17 @@ export async function POST(req, res) {
     );
 
     if (passwordMatch) {
+      // Generate JWT token
+      const token = jwt.sign(
+        { userId: existingUser._id, email: existingUser.email },
+        'mellowking',
+        { expiresIn: "1h" } // Token expiry time
+      );
+
+      // Send JWT token in the response
       return NextResponse.json({
         message: "Validated login successfully",
+        token: token,
       });
     } else {
       return NextResponse.json({ message: "Incorrect password" });

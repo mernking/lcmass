@@ -12,6 +12,7 @@
     "animejs": "^3.2.2",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "6.5",
     "mongoose": "^8.3.3",
     "next": "14.2.3",
