@@ -1,4 +1,5 @@
-"use client";import Link from "next/link";
+"use client";
+import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
 
@@ -6,7 +7,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//   const [rememberMe, setRememberMe] = useState(false);
+  //   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +19,9 @@ export default function SignUp() {
         password,
         // rememberMe,
       });
+      if (response.data.message == "User already exists") {
+        window.location.href = "/login";
+      }
 
       console.log(response.data); // Handle success response
     } catch (error) {
@@ -94,4 +98,3 @@ export default function SignUp() {
     </div>
   );
 }
-

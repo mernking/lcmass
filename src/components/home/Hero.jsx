@@ -1,6 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import "./nav.css";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -22,11 +23,15 @@ export default function Hero() {
         </div> */}
         <div className="cta w-full py-2 flex gap-[2%] justify-center">
           <button className="ctabtn px-2 py-1 text-sm">
-            <p>let get started</p>
+            <Link href="/login">
+              <p>let get started</p>
+            </Link>
           </button>
 
           <button className="ctabtnf px-2 py-1 text-sm">
-            <p>see features</p>
+            <Link href="#features">
+              <p>see features</p>
+            </Link>
           </button>
         </div>
       </div>
