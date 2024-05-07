@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
@@ -23,7 +23,7 @@ export default function page() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.message == "Valid token") {
+        if (data.success) {
           setUser(data.user); // Set user data if token is valid
         } else {
           router.push("/login"); // Redirect to login if token is invalid
@@ -41,7 +41,7 @@ export default function page() {
 
   return (
     <div>
-      <h1>Welcome to page, {user.name}!</h1>
+      <h1>Welcome to Page, {user.name}!</h1>
     </div>
   );
 }
